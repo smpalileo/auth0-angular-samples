@@ -4,3 +4,9 @@
 <h4 *ngIf="!auth.isAuthenticated()">
   You are not logged in! Please <a (click)="auth.login()">Log In</a> to continue.
 </h4>
+<div class="alert alert-danger">
+  <b>Note:</b> You'll need to whitelist this Heroku domain as an Allowed Callback URL in your 
+  <a href="https://manage.auth0.com/#/clients/{{clientId}}/settings"
+    target="_blank">Auth0 client settings
+  </a>.
+</div>
