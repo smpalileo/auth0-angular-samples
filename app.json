@@ -1,6 +1,6 @@
 {
   "name": "Auth0 Angular Login",
-  "description": "This app demonstrates how to use Auth0's Lock widget in an Angular 2 application.",
+  "description": "This app demonstrates how to authenticate users in an Angular application using Auth0.",
   "keywords": [
     "Auth0",
     "Authentication"
