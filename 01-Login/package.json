@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "node heroku.js",
+    "build": "ng build -prod",
+    "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
-    "lint": "ng lint",
+    "postinstall": "ng build -prod",
     "e2e": "ng e2e"
   },
   "private": true,

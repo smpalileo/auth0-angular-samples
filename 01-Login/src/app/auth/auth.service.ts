@@ -1,3 +1,4 @@
+import { AppConfig } from './../app.config';
 import { Injectable } from '@angular/core';
 import { AUTH_CONFIG } from './auth0-variables';
 import { Router } from '@angular/router';
@@ -7,16 +8,19 @@ import * as auth0 from 'auth0-js';
 @Injectable()
 export class AuthService {
 
-  auth0 = new auth0.WebAuth({
-    clientID: AUTH_CONFIG.clientID,
-    domain: AUTH_CONFIG.domain,
-    responseType: 'token id_token',
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: 'http://localhost:4200/callback',
-    scope: 'openid'
-  });
+  auth0;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, public appConfig: AppConfig) {
+    const { AUTH0_CLIENT_ID, AUTH0_DOMAIN } = appConfig.config;
+    this.auth0 = new auth0.WebAuth({
+      clientID: AUTH0_CLIENT_ID,
+      domain: AUTH0_DOMAIN,
+      responseType: 'token id_token',
+      audience: `https://${AUTH0_DOMAIN}/userinfo`,
+      redirectUri: `${window.location.href}callback`,
+      scope: 'openid'
+    });
+  }
 
   public login(): void {
     this.auth0.authorize();

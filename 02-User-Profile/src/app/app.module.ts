@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,13 @@ import { ROUTES } from './app.routes';
 import { AuthService } from './auth/auth.service';
 import { ProfileComponent } from './profile/profile.component';
 import { CallbackComponent } from './callback/callback.component';
+
+// this is only used for deploy the sample to Heroku
+// from auth0.com/docs. You can otherwise ignore it.
+import { AppConfig } from './app.config';
+export function appConfigFactory(config: AppConfig) {
+  return () => config.load();
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +33,16 @@ import { CallbackComponent } from './callback/callback.component';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    AppConfig,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appConfigFactory,
+      deps: [AppConfig],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
