@@ -17,5 +17,10 @@
       "description": "Domain for your Auth0 application.",
       "value": ""
     }
-  }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ]
 }
