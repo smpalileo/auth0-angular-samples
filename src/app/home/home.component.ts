@@ -10,6 +10,7 @@ import { AppConfig } from './../app.config';
 export class HomeComponent implements OnInit {
 
   clientId: string;
+  domain: string = window.location.href;
 
   constructor(public auth: AuthService, public appConfig: AppConfig) { }
 
