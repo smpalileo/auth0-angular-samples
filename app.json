@@ -9,12 +9,12 @@
   "repository": "https://github.com/auth0-samples/auth0-angular-samples",
   "logo": "https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg",
   "env": {
-    "AUTH0_CLIENT_ID": {
-      "description": "Client ID for your Auth0 application.",
-      "value": ""
-    },
     "AUTH0_DOMAIN": {
       "description": "Domain for your Auth0 application.",
+      "value": ""
+    },
+    "AUTH0_CLIENT_ID": {
+      "description": "Client ID for your Auth0 application.",
       "value": ""
     }
   },
